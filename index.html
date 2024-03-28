@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Le reformulateur</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reformulateur</h1>
+        <form id="chat-form">
+            <label for="mytext">✒️ Entre ton texte à reformuler:</label>
+            <textarea id="mytext" required rows="5" placeholder="Saisis ton message ici..."></textarea>
+			<br>     
+            <!-- Section pour l'entrée des tags (Ton du message) -->
+            <div class="tag-container">
+                <label>💬 Ton:</label>
+                <div class="tags" id="tone-tags">
+                    <span class="tag selected">Professionnel</span>
+					<span class="tag">Informatif</span>
+                    <span class="tag">Décontracté</span>
+                    <span class="tag">Enthousiaste</span>                
+                    <span class="tag">Drôle</span>
+                    <!-- L'élément pour ajouter un nouveau tag -->
+                    <input type="text" id="new-tone-tag-input" class="new-tag-input" placeholder="Ajouter un tag" style="display:none;"/>
+                    <span class="tag add-new" data-for="new-tone-tag-input">+</span>
+                </div>
+            </div>
+			<br>
+            <!-- Section pour l'entrée des tags (FORMAT du message) -->
+            <div class="tag-container">
+                <label>📄 Format:</label>
+                <div class="tags" id="format-tags">
+                    <span class="tag selected">Mail</span>
+                    <span class="tag">Paragraphe</span>
+                    <span class="tag">Idées</span>
+                    <span class="tag">Article de blog</span>
+                    <input type="text" id="new-format-tag-input" class="new-tag-input" placeholder="Ajouter un tag" style="display:none;"/>
+                    <span class="tag add-new" data-for="new-format-tag-input">+</span>
+                </div>
+            </div>
+			<br>
+            <!-- Section pour l'entrée des tags (LONGUEUR du message) -->
+            <div class="tag-container">
+                <label>📏 Longueur:</label>
+                <div class="tags" id="length-tags">
+                    <span class="tag">Court</span>
+                    <span class="tag selected">Moyen</span>
+                    <span class="tag">Long</span>
+                </div>
+            </div>
+			<br>
+            <button type="submit">Reformuler</button>
+        </form>
+        <div id="copy-response-container">
+            <h2>🪄 Réponse 🪄</h2>
+			<div id="loading-bar-container" style="display: none;">
+				<div id="loading-bar" style="width: 40%; height: 5px; background-color: #4caf50;"></div>
+			</div>
+            <textarea id="response" rows="10" readonly placeholder="Le résultat sera ici..."></textarea>
+			<br>
+            <button class="copy-button" onclick="copyToClipboard()">Copier</button>
+			<button class="add-button" id="add-button">Ajouter</button>
+        </div>
+        <div class="signature">
+            ✨ 2024 by Djamal Boussefsaf ✨
+        </div>
+    </div>
+    <script src="script/script.js"></script>
+    <script>
+        function copyToClipboard() {
+            var responseTextarea = document.getElementById("response");
+            responseTextarea.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
