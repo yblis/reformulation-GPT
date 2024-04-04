@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mytextInput = document.getElementById('mytext');
     const responseTextarea = document.getElementById('response');
     const loadingBarContainer = document.getElementById('loading-bar-container');
-    const API_KEY = 'ENTER_API_KEY_HERE';
+	const API_KEY = 'gsk_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Groq API
+    //const API_KEY = 'sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // OpenAI API
 	
 function animateLoadingBar() {
     const loadingBar = document.getElementById('loading-bar');
@@ -29,19 +30,22 @@ function animateLoadingBar() {
         loadingBarContainer.style.display = 'block';
 
         try {
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            // const response = await fetch('https://api.openai.com/v1/chat/completions', { // Openai API
+	    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', { // Groq API
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${API_KEY}`
                 },
                 body: JSON.stringify({
-                    model: 'gpt-3.5-turbo-16k',
+                    // model: 'gpt-3.5-turbo-16k', //openai API
+		    // model: 'llama2-70b-4096', // Groq API
+		    model: 'mixtral-8x7b-32768', // Groq API
                     messages: [{
                         role: 'user',
                         // content: `reformule ce texte: ${mytext} \n\nton: ${toneTags.join(', ')} \nlongueur: ${lengthTags.join(', ')} \nformat: ${formatTags.join(', ')}`
 						//content: `Je suis une IA et je vais reformuler le texte suivant en gardant le ton, la longueur et le format spécifiés. \n\nTexte à reformuler: ${mytext} \n\nTon: ${toneTags.join(', ')} \n\nLongueur: ${lengthTags.join(', ')} \n\nFormat: ${formatTags.join(', ')}` 
-						content: `Je suis une IA et je vais reformuler le texte suivant en gardant le ton, la longueur et le format spécifiés. \n\nTexte à reformuler: ${mytext} \n\nTon: ${toneTags.join(', ')} \n\nLongueur: ${lengthTags.join(', ')} \n\nFormat: ${formatTags.join(', ')}` 
+						content: `Langue: Français: Je suis une IA et je vais reformuler le texte suivant en gardant le ton, la longueur et le format spécifiés. \n\nTexte à reformuler: ${mytext} \n\nTon: ${toneTags.join(', ')} \n\nLongueur: ${lengthTags.join(', ')} \n\nFormat: ${formatTags.join(', ')}` 
                     }],
                     temperature: 1.0,
                     top_p: 0.7,
