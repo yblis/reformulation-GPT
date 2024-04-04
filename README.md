@@ -17,7 +17,7 @@ Reformulateur est une extension pour navigateurs Chrome et Edge qui permet de re
 3. Choisissez vos préférences et obtenez une reformulation instantanée.
 
 ## Installation
-Visitez le Chrome Web Store ou le Microsoft Edge Addons pour ajouter Reformulateur à votre navigateur.
+
 
 ## Licence
 Sous licence MIT, libre d'utilisation et de modification.
